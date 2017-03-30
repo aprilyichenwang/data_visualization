@@ -1,3 +1,4 @@
+library(ggplot2)
 library(dplyr)
 library(gridExtra)
 
@@ -15,7 +16,7 @@ get_data<-function(){
 
 make_plot<-function(df){
   g1<-ggplot(df, aes(label, rmse))+geom_boxplot()
-  g1<-g+labs(title='RMSE',x='',y='')+ylim(c(1.2,3.5))+
+  g1<-g1+labs(title='RMSE',x='',y='')+ylim(c(1.2,3.5))+
     theme(plot.title = element_text(hjust = 0.5))
   g2<-ggplot(df, aes(label, mederr))+geom_boxplot()
   g2<-g2+labs(title='MedErr',x='',y='')+ylim(c(0.225,0.425))+
