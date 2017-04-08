@@ -42,13 +42,11 @@ get_merged_data<-function(){
   return(results)
 }
 
-melt_table<-function(){
+melt_table<-function(df_le, df_fertility){
   melted_le<-melt(df_le, id=c('Country.Code','Country.Name','Region'))
   melted_le<-rename(melted_le, Year=variable,Life.Expectancy=value)
-  head(melted_le)
   melted_fertility<-melt(df_fertility, id=c('Country.Code','Country.Name','Region'))
   melted_fertility<-rename(melted_fertility, Year=variable,Fertility.Rate=value)
-  head(melted_fertility)
   results<-list(melted_le,melted_fertility)
   return(results)
 }
@@ -58,11 +56,15 @@ results<-get_merged_data()
 df_le<-results[[1]]
 df_fertility<-results[[2]]
 
-melted_le<-melt_table()[[1]]
-melted_fertility<-melt_table()[[2]]
+melted_le<-melt_table(df_le, df_fertility)[[1]]
+melted_fertility<-melt_table(df_le, df_fertility)[[2]]
 
 super_data<-merge(melted_le, melted_fertility, on=c('Country.Code','Country.Name','Region', 'Year'))
+super_data<-super_data[complete.cases(super_data), ]
 head(super_data,20)
+saveRDS(super_data, file='super_data.rds')
+
+#write.csv(super_data_path)
 
 make_plot<-function(yr){
   library(ggplot2)
@@ -71,4 +73,5 @@ make_plot<-function(yr){
   #str(super_data)  
 }
 
+# for testing
 make_plot(1960)
