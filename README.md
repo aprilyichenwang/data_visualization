@@ -8,6 +8,6 @@ ggplot2-
 
 
 Rshiny-
-WorldBank data DEMO:
-Interactive plot, users can choose the region as well as the year (1960-2014)
-fertility rate vs life expectancy
+1. WorldBank data DEMO:
+    Interactive plot, users can choose the region as well as the year (1960-2014)
+    fertility rate vs life expectancy
