@@ -8,6 +8,10 @@ ggplot2-
 
 
 Rshiny-
-1. WorldBank data DEMO:
+1. Sample Size calculator for AB Testing
+
+2. WorldBank data DEMO:
     Interactive plot, users can choose the region/continent as well as the year (1960-2014)
     data: fertility rate vs life expectancy
+
+3. Starrynight- USA Airport Flight info visualization
